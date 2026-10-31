@@ -1,0 +1,19 @@
+name: Clinical Engine CI
+on:
+  push:
+    paths: ['services/clinical-engine/**']
+  pull_request:
+    paths: ['services/clinical-engine/**']
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/clinical-engine
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements-dev.txt
+      - run: pytest -q
