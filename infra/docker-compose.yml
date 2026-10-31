@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: healthyfood-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: healthyfood
+      POSTGRES_USER: healthyfood
+      POSTGRES_PASSWORD: healthyfood_local_only
+    ports:
+      - "5432:5432"
+    volumes:
+      - healthyfood_pgdata:/var/lib/postgresql/data
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U healthyfood -d healthyfood"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  healthyfood_pgdata:
