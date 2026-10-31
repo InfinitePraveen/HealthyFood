@@ -1,6 +1,6 @@
 # HealthyFood
 
-Medically Tailored Meal (MTM) Delivery Platform — US-first pilot foundation.
+India's First Medically Tailored Meal (MTM) Delivery Platform.
 
 HealthyFood connects patients, clinicians, commercial kitchens, and delivery partners through a clinically governed meal-planning and fulfillment workflow.
 
